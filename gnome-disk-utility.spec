@@ -4,14 +4,13 @@
 #
 Summary:	Disk management application
 Name:		gnome-disk-utility
-Version:	0.3
+Version:	2.28.0
 Release:	1
 License:	LGPL v2+
 Group:		X11/Applications
-Source0:	http://hal.freedesktop.org/releases/%{name}-%{version}.tar.bz2
-# Source0-md5:	1aa94c224cd3dd2ebfd05bf31476dbb5
-BuildRequires:	DeviceKit-disks-devel >= 004
-BuildRequires:	PolicyKit-gnome-devel >= 0.7
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-disk-utility/2.28/%{name}-%{version}.tar.bz2
+# Source0-md5:	2ef95e6d5949c0d623b16bb98108cce8
+BuildRequires:	DeviceKit-disks-devel >= 007
 BuildRequires:	autoconf
 BuildRequires:	automake >= 1:1.9
 BuildRequires:	dbus-glib-devel >= 0.74
@@ -20,11 +19,11 @@ BuildRequires:	glib2-devel >= 1:2.16.0
 BuildRequires:	gnome-common
 BuildRequires:	gnome-doc-utils
 BuildRequires:	gnome-keyring-devel >= 2.22.0
-BuildRequires:	gtk+2-devel >= 2:2.6.0
+BuildRequires:	gtk+2-devel >= 2:2.18.0
 %{?with_apidocs:BuildRequires:	gtk-doc >= 1.3}
 BuildRequires:	intltool >= 0.35.0
+BuildRequires:	libatasmart-devel >= 0.14
 BuildRequires:	libnotify-devel >= 0.3.0
-BuildRequires:	libsexy-devel >= 0.1.11
 BuildRequires:	libtool
 BuildRequires:	libunique-devel >= 1.0.0
 BuildRequires:	nautilus-devel >= 2.24.0
@@ -34,7 +33,7 @@ BuildRequires:	rpmbuild(macros) >= 1.311
 BuildRequires:	scrollkeeper
 Requires(post,postun):	gtk+2
 Requires:	%{name}-libs = %{version}-%{release}
-Requires:	DeviceKit-disks >= 004
+Requires:	DeviceKit-disks >= 007
 Requires:	hicolor-icon-theme
 Requires:	nautilus >= 2.24.0
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -59,10 +58,9 @@ Biblioteki gnome-disk-utility.
 Summary:	Header files for gnome-disk-utility libraries
 Summary(pl.UTF-8):	Pliki nagłówkowe bibliotek gnome-disk-utility
 Group:		X11/Development/Libraries
-Requires:	%{name} = %{version}-%{release}
-Requires:	PolicyKit-gnome-devel >= 0.7
+Requires:	%{name}-libs = %{version}-%{release}
 Requires:	glib2-devel >= 1:2.16.0
-Requires:	gtk+2-devel >= 2:2.6.0
+Requires:	gtk+2-devel >= 2:2.18.0
 
 %description devel
 Header files for gnome-disk-utility libraries.
