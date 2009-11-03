@@ -4,12 +4,12 @@
 #
 Summary:	Disk management application
 Name:		gnome-disk-utility
-Version:	2.28.0
+Version:	2.28.1
 Release:	1
 License:	LGPL v2+
 Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-disk-utility/2.28/%{name}-%{version}.tar.bz2
-# Source0-md5:	2ef95e6d5949c0d623b16bb98108cce8
+# Source0-md5:	d0e6191b7446717d80ccd7b3da611941
 BuildRequires:	DeviceKit-disks-devel >= 007
 BuildRequires:	autoconf
 BuildRequires:	automake >= 1:1.9
