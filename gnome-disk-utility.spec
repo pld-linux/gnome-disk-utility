@@ -14,6 +14,7 @@ BuildRequires:	DeviceKit-disks-devel >= 007
 BuildRequires:	autoconf
 BuildRequires:	automake >= 1:1.9
 BuildRequires:	dbus-glib-devel >= 0.74
+BuildRequires:	docbook-dtd412-xml
 BuildRequires:	gettext-devel
 BuildRequires:	glib2-devel >= 1:2.16.0
 BuildRequires:	gnome-common
@@ -31,6 +32,7 @@ BuildRequires:	pkgconfig
 BuildRequires:	rpmbuild(find_lang) >= 1.23
 BuildRequires:	rpmbuild(macros) >= 1.311
 BuildRequires:	scrollkeeper
+BuildRequires:	udev-devel
 Requires(post,postun):	gtk+2
 Requires:	%{name}-libs = %{version}-%{release}
 Requires:	DeviceKit-disks >= 007
