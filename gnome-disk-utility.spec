@@ -98,6 +98,7 @@ Dokumentacja API bibliotek gnome-disk-utility.
 %setup -q
 
 %build
+%{__gtkdocize}
 %{__intltoolize}
 %{__libtoolize}
 %{__aclocal}
