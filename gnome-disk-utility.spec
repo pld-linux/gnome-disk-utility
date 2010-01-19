@@ -5,7 +5,7 @@
 Summary:	Disk management application
 Name:		gnome-disk-utility
 Version:	2.28.1
-Release:	2
+Release:	3
 License:	LGPL v2+
 Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-disk-utility/2.28/%{name}-%{version}.tar.bz2
@@ -35,7 +35,6 @@ BuildRequires:	scrollkeeper
 BuildRequires:	udev-devel
 Requires(post,postun):	gtk+2
 Requires:	%{name}-libs = %{version}-%{release}
-Requires:	DeviceKit-disks >= 007
 Requires:	hicolor-icon-theme
 Requires:	nautilus >= 2.24.0
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -49,6 +48,7 @@ RAID, SMART monitoring, etc.
 Summary:	gnome-disk-utility libraries
 Summary(pl.UTF-8):	Biblioteki gnome-disk-utility
 Group:		X11/Libraries
+Requires:	DeviceKit-disks >= 007
 
 %description libs
 gnome-disk-utility libraries.
