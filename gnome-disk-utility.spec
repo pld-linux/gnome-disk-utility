@@ -4,26 +4,27 @@
 #
 Summary:	Disk management application
 Name:		gnome-disk-utility
-Version:	2.28.1
-Release:	3
+Version:	2.30.1
+Release:	1
 License:	LGPL v2+
 Group:		X11/Applications
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-disk-utility/2.28/%{name}-%{version}.tar.bz2
-# Source0-md5:	d0e6191b7446717d80ccd7b3da611941
-BuildRequires:	DeviceKit-disks-devel >= 007
+#Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-disk-utility/2.30/%{name}-%{version}.tar.bz2
+Source0:	http://hal.freedesktop.org/releases/%{name}-%{version}.tar.bz2
+# Source0-md5:	decc5df9085c86de0478d9bf89f289c3
 BuildRequires:	autoconf
 BuildRequires:	automake >= 1:1.9
+BuildRequires:	avahi-ui-devel >= 0.6.25
 BuildRequires:	dbus-glib-devel >= 0.74
 BuildRequires:	docbook-dtd412-xml
 BuildRequires:	gettext-devel
-BuildRequires:	glib2-devel >= 1:2.16.0
+BuildRequires:	glib2-devel >= 1:2.22.0
 BuildRequires:	gnome-common
 BuildRequires:	gnome-doc-utils
-BuildRequires:	gnome-keyring-devel >= 2.22.0
 BuildRequires:	gtk+2-devel >= 2:2.18.0
 %{?with_apidocs:BuildRequires:	gtk-doc >= 1.3}
 BuildRequires:	intltool >= 0.35.0
 BuildRequires:	libatasmart-devel >= 0.14
+BuildRequires:	libgnome-keyring-devel >= 2.22.0
 BuildRequires:	libnotify-devel >= 0.3.0
 BuildRequires:	libtool
 BuildRequires:	libunique-devel >= 1.0.0
@@ -32,7 +33,9 @@ BuildRequires:	pkgconfig
 BuildRequires:	rpmbuild(find_lang) >= 1.23
 BuildRequires:	rpmbuild(macros) >= 1.311
 BuildRequires:	scrollkeeper
+BuildRequires:	sed >= 4.0
 BuildRequires:	udev-devel
+BuildRequires:	udisks-devel >= 1.0.0
 Requires(post,postun):	gtk+2
 Requires:	%{name}-libs = %{version}-%{release}
 Requires:	hicolor-icon-theme
@@ -48,7 +51,7 @@ RAID, SMART monitoring, etc.
 Summary:	gnome-disk-utility libraries
 Summary(pl.UTF-8):	Biblioteki gnome-disk-utility
 Group:		X11/Libraries
-Requires:	DeviceKit-disks >= 007
+Requires:	udisks >= 1.0.0
 
 %description libs
 gnome-disk-utility libraries.
@@ -61,7 +64,7 @@ Summary:	Header files for gnome-disk-utility libraries
 Summary(pl.UTF-8):	Pliki nagłówkowe bibliotek gnome-disk-utility
 Group:		X11/Development/Libraries
 Requires:	%{name}-libs = %{version}-%{release}
-Requires:	glib2-devel >= 1:2.16.0
+Requires:	glib2-devel >= 1:2.22.0
 Requires:	gtk+2-devel >= 2:2.18.0
 
 %description devel
@@ -97,6 +100,9 @@ Dokumentacja API bibliotek gnome-disk-utility.
 %prep
 %setup -q
 
+sed -i -e 's/^en@shaw//' po/LINGUAS
+rm -f po/en@shaw.po
+
 %build
 %{__gtkdocize}
 %{__intltoolize}
@@ -106,6 +112,7 @@ Dokumentacja API bibliotek gnome-disk-utility.
 %{__autoheader}
 %{__automake}
 %configure \
+	--disable-silent-rules \
 	--%{?with_apidocs:en}%{!?with_apidocs:dis}able-gtk-doc \
 	--with-html-dir=%{_gtkdocdir}
 
