@@ -1,16 +1,16 @@
 #
 # Conditional build:
-%bcond_without	apidocs		# do not build and package API docs
+%bcond_with	apidocs		# do not build and package API docs
 #
 Summary:	Disk management application
 Name:		gnome-disk-utility
-Version:	2.30.1
-Release:	2
+Version:	2.32.0
+Release:	1
 License:	LGPL v2+
 Group:		X11/Applications
 #Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-disk-utility/2.30/%{name}-%{version}.tar.bz2
 Source0:	http://hal.freedesktop.org/releases/%{name}-%{version}.tar.bz2
-# Source0-md5:	decc5df9085c86de0478d9bf89f289c3
+# Source0-md5:	f0366c8baebca0404d190b2d78f3582d
 BuildRequires:	autoconf
 BuildRequires:	automake >= 1:1.9
 BuildRequires:	avahi-ui-devel >= 0.6.25
@@ -20,7 +20,7 @@ BuildRequires:	gettext-devel
 BuildRequires:	glib2-devel >= 1:2.22.0
 BuildRequires:	gnome-common
 BuildRequires:	gnome-doc-utils
-BuildRequires:	gtk+2-devel >= 2:2.18.0
+BuildRequires:	gtk+2-devel >= 2:2.20.0
 %{?with_apidocs:BuildRequires:	gtk-doc >= 1.3}
 BuildRequires:	intltool >= 0.35.0
 BuildRequires:	libatasmart-devel >= 0.14
@@ -65,7 +65,7 @@ Summary(pl.UTF-8):	Pliki nagłówkowe bibliotek gnome-disk-utility
 Group:		X11/Development/Libraries
 Requires:	%{name}-libs = %{version}-%{release}
 Requires:	glib2-devel >= 1:2.22.0
-Requires:	gtk+2-devel >= 2:2.18.0
+Requires:	gtk+2-devel >= 2:2.20.0
 
 %description devel
 Header files for gnome-disk-utility libraries.
