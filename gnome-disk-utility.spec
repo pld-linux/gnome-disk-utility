@@ -41,6 +41,7 @@ Requires:	%{name}-libs = %{version}-%{release}
 Requires:	hicolor-icon-theme
 Requires:	nautilus >= 2.24.0
 Requires:	udisks >= 1.0.0
+Suggests:	openssh-gnome-askpass
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
