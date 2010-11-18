@@ -5,7 +5,7 @@
 Summary:	Disk management application
 Name:		gnome-disk-utility
 Version:	2.32.0
-Release:	1
+Release:	2
 License:	LGPL v2+
 Group:		X11/Applications
 #Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-disk-utility/2.30/%{name}-%{version}.tar.bz2
@@ -43,6 +43,8 @@ Requires:	nautilus >= 2.24.0
 Requires:	udisks >= 1.0.0
 Suggests:	openssh-gnome-askpass
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
+
+%define		skip_post_check_so	libgdu-gtk.so.0.0.0
 
 %description
 This package contains the Palimpsest disk management application.
