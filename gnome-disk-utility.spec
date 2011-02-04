@@ -36,9 +36,9 @@ BuildRequires:	scrollkeeper
 BuildRequires:	sed >= 4.0
 BuildRequires:	udev-devel
 BuildRequires:	udisks-devel >= 1.0.0
-Requires(post,postun):	gtk+2
+Requires(post,postun):	gtk-update-icon-cache
+Requires(post,postun):	hicolor-icon-theme
 Requires:	%{name}-libs = %{version}-%{release}
-Requires:	hicolor-icon-theme
 Requires:	nautilus >= 2.24.0
 Requires:	udisks >= 1.0.0
 Suggests:	openssh-gnome-askpass
