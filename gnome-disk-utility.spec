@@ -4,13 +4,13 @@
 #
 Summary:	Disk management application
 Name:		gnome-disk-utility
-Version:	2.32.0
-Release:	2
+Version:	2.91.6
+Release:	1
 License:	LGPL v2+
 Group:		X11/Applications
-#Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-disk-utility/2.30/%{name}-%{version}.tar.bz2
-Source0:	http://hal.freedesktop.org/releases/%{name}-%{version}.tar.bz2
-# Source0-md5:	f0366c8baebca0404d190b2d78f3582d
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-disk-utility/2.91/%{name}-%{version}.tar.bz2
+# Source0-md5:	8d902c78f5f8a245dc97029d53fa12a4
+Patch0:		%{name}-link.patch
 BuildRequires:	autoconf
 BuildRequires:	automake >= 1:1.9
 BuildRequires:	avahi-ui-devel >= 0.6.25
@@ -20,31 +20,28 @@ BuildRequires:	gettext-devel
 BuildRequires:	glib2-devel >= 1:2.22.0
 BuildRequires:	gnome-common
 BuildRequires:	gnome-doc-utils
-BuildRequires:	gtk+2-devel >= 2:2.20.0
+BuildRequires:	gtk+3-devel >= 2.90.7
 %{?with_apidocs:BuildRequires:	gtk-doc >= 1.3}
 BuildRequires:	intltool >= 0.35.0
 BuildRequires:	libatasmart-devel >= 0.14
 BuildRequires:	libgnome-keyring-devel >= 2.22.0
-BuildRequires:	libnotify-devel >= 0.3.0
+BuildRequires:	libnotify-devel >= 0.6.1
 BuildRequires:	libtool
-BuildRequires:	libunique-devel >= 1.0.0
+BuildRequires:	libunique-devel >= 2.91.4
 BuildRequires:	nautilus-devel >= 2.24.0
 BuildRequires:	pkgconfig
 BuildRequires:	rpmbuild(find_lang) >= 1.23
-BuildRequires:	rpmbuild(macros) >= 1.311
+BuildRequires:	rpmbuild(macros) >= 1.601
 BuildRequires:	scrollkeeper
 BuildRequires:	sed >= 4.0
-BuildRequires:	udev-devel
 BuildRequires:	udisks-devel >= 1.0.0
-Requires(post,postun):	gtk+2
+Requires(post,postun):	gtk-update-icon-cache
 Requires:	%{name}-libs = %{version}-%{release}
 Requires:	hicolor-icon-theme
 Requires:	nautilus >= 2.24.0
 Requires:	udisks >= 1.0.0
 Suggests:	openssh-gnome-askpass
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
-
-%define		skip_post_check_so	libgdu-gtk.so.0.0.0
 
 %description
 This package contains the Palimpsest disk management application.
@@ -68,7 +65,7 @@ Summary(pl.UTF-8):	Pliki nagłówkowe bibliotek gnome-disk-utility
 Group:		X11/Development/Libraries
 Requires:	%{name}-libs = %{version}-%{release}
 Requires:	glib2-devel >= 1:2.22.0
-Requires:	gtk+2-devel >= 2:2.20.0
+Requires:	gtk+3-devel >= 2.90.7
 
 %description devel
 Header files for gnome-disk-utility libraries.
@@ -102,9 +99,7 @@ Dokumentacja API bibliotek gnome-disk-utility.
 
 %prep
 %setup -q
-
-sed -i -e 's/^en@shaw//' po/LINGUAS
-rm -f po/en@shaw.po
+%patch0 -p1
 
 %build
 %{__gtkdocize}
