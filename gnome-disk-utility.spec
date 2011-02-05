@@ -13,7 +13,7 @@ Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-disk-utility/2.91/%{name}-
 Patch0:		%{name}-link.patch
 BuildRequires:	autoconf
 BuildRequires:	automake >= 1:1.9
-BuildRequires:	avahi-ui-devel >= 0.6.25
+BuildRequires:	avahi-ui-gtk3-devel >= 0.6.25
 BuildRequires:	dbus-glib-devel >= 0.74
 BuildRequires:	docbook-dtd412-xml
 BuildRequires:	gettext-devel
