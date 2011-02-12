@@ -5,7 +5,7 @@
 Summary:	Disk management application
 Name:		gnome-disk-utility
 Version:	2.91.6
-Release:	1
+Release:	2
 License:	LGPL v2+
 Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-disk-utility/2.91/%{name}-%{version}.tar.bz2
@@ -17,10 +17,10 @@ BuildRequires:	avahi-ui-gtk3-devel >= 0.6.25
 BuildRequires:	dbus-glib-devel >= 0.74
 BuildRequires:	docbook-dtd412-xml
 BuildRequires:	gettext-devel
-BuildRequires:	glib2-devel >= 1:2.22.0
+BuildRequires:	glib2-devel >= 1:2.28.0
 BuildRequires:	gnome-common
 BuildRequires:	gnome-doc-utils
-BuildRequires:	gtk+3-devel >= 2.90.7
+BuildRequires:	gtk+3-devel >= 3.0.0
 %{?with_apidocs:BuildRequires:	gtk-doc >= 1.3}
 BuildRequires:	intltool >= 0.35.0
 BuildRequires:	libatasmart-devel >= 0.14
@@ -64,8 +64,8 @@ Summary:	Header files for gnome-disk-utility libraries
 Summary(pl.UTF-8):	Pliki nagłówkowe bibliotek gnome-disk-utility
 Group:		X11/Development/Libraries
 Requires:	%{name}-libs = %{version}-%{release}
-Requires:	glib2-devel >= 1:2.22.0
-Requires:	gtk+3-devel >= 2.90.7
+Requires:	glib2-devel >= 1:2.28.0
+Requires:	gtk+3-devel >= 3.0.0
 
 %description devel
 Header files for gnome-disk-utility libraries.
@@ -111,7 +111,7 @@ Dokumentacja API bibliotek gnome-disk-utility.
 %{__automake}
 %configure \
 	--disable-silent-rules \
-	--%{?with_apidocs:en}%{!?with_apidocs:dis}able-gtk-doc \
+	%{__enable_disable apidocs gtk-doc} \
 	--with-html-dir=%{_gtkdocdir}
 
 %{__make}
@@ -123,6 +123,7 @@ rm -rf $RPM_BUILD_ROOT
 	DESTDIR=$RPM_BUILD_ROOT
 
 %{__rm} $RPM_BUILD_ROOT%{_libdir}/nautilus/extensions-2.0/libnautilus-gdu.{a,la}
+%{__rm} $RPM_BUILD_ROOT%{_libdir}/*.la
 
 %find_lang gnome-disk-utility
 %find_lang palimpsest --with-gnome --with-omf
@@ -162,8 +163,6 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/libgdu-gtk.so
 %attr(755,root,root) %{_libdir}/libgdu.so
-%{_libdir}/libgdu-gtk.la
-%{_libdir}/libgdu.la
 %{_includedir}/gnome-disk-utility
 %{_pkgconfigdir}/gdu-gtk.pc
 %{_pkgconfigdir}/gdu.pc
