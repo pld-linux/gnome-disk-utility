@@ -5,12 +5,13 @@
 Summary:	Disk management application
 Name:		gnome-disk-utility
 Version:	2.91.6
-Release:	2
+Release:	3
 License:	LGPL v2+
 Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-disk-utility/2.91/%{name}-%{version}.tar.bz2
 # Source0-md5:	8d902c78f5f8a245dc97029d53fa12a4
 Patch0:		%{name}-link.patch
+Patch1:		nautilus-extension-dir.patch
 BuildRequires:	autoconf
 BuildRequires:	automake >= 1:1.9
 BuildRequires:	avahi-ui-gtk3-devel >= 0.6.25
@@ -100,6 +101,7 @@ Dokumentacja API bibliotek gnome-disk-utility.
 %prep
 %setup -q
 %patch0 -p1
+%patch1 -p1
 
 %build
 %{__gtkdocize}
@@ -122,7 +124,7 @@ rm -rf $RPM_BUILD_ROOT
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
-%{__rm} $RPM_BUILD_ROOT%{_libdir}/nautilus/extensions-2.0/libnautilus-gdu.{a,la}
+%{__rm} $RPM_BUILD_ROOT%{_libdir}/nautilus/extensions-3.0/libnautilus-gdu.{a,la}
 %{__rm} $RPM_BUILD_ROOT%{_libdir}/*.la
 
 %find_lang gnome-disk-utility
@@ -146,7 +148,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/palimpsest
 %attr(755,root,root) %{_libdir}/gdu-format-tool
 %attr(755,root,root) %{_libdir}/gdu-notification-daemon
-%attr(755,root,root) %{_libdir}/nautilus/extensions-2.0/libnautilus-gdu.so
+%attr(755,root,root) %{_libdir}/nautilus/extensions-3.0/libnautilus-gdu.so
 %{_sysconfdir}/xdg/autostart/gdu-notification-daemon.desktop
 %{_desktopdir}/palimpsest.desktop
 %{_iconsdir}/hicolor/*/*/*.png
