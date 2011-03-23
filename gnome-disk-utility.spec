@@ -4,12 +4,12 @@
 #
 Summary:	Disk management application
 Name:		gnome-disk-utility
-Version:	2.91.6
-Release:	3
+Version:	2.91.7
+Release:	1
 License:	LGPL v2+
 Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-disk-utility/2.91/%{name}-%{version}.tar.bz2
-# Source0-md5:	8d902c78f5f8a245dc97029d53fa12a4
+# Source0-md5:	b711e76e023537944a7a4efcb24e9826
 Patch0:		%{name}-link.patch
 Patch1:		nautilus-extension-dir.patch
 BuildRequires:	autoconf
