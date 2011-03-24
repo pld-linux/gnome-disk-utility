@@ -28,7 +28,7 @@ BuildRequires:	libatasmart-devel >= 0.14
 BuildRequires:	libgnome-keyring-devel >= 2.22.0
 BuildRequires:	libnotify-devel >= 0.6.1
 BuildRequires:	libtool
-BuildRequires:	libunique-devel >= 2.91.4
+BuildRequires:	libunique3-devel >= 2.91.4
 BuildRequires:	nautilus-devel >= 2.24.0
 BuildRequires:	pkgconfig
 BuildRequires:	rpmbuild(find_lang) >= 1.23
