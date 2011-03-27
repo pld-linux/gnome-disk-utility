@@ -3,6 +3,7 @@
 %bcond_with	apidocs		# do not build and package API docs
 #
 Summary:	Disk management application
+Summary(pl.UTF-8):	Aplikacja do zarządzania dyskami
 Name:		gnome-disk-utility
 Version:	2.32.0
 Release:	2
@@ -33,7 +34,6 @@ BuildRequires:	pkgconfig
 BuildRequires:	rpmbuild(find_lang) >= 1.23
 BuildRequires:	rpmbuild(macros) >= 1.311
 BuildRequires:	scrollkeeper
-BuildRequires:	sed >= 4.0
 BuildRequires:	udev-devel
 BuildRequires:	udisks-devel >= 1.0.0
 Requires(post,postun):	gtk-update-icon-cache
@@ -50,6 +50,11 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 This package contains the Palimpsest disk management application.
 Palimpsest supports partitioning, file system creation, encryption,
 RAID, SMART monitoring, etc.
+
+%description -l pl.UTF-8
+Ten pakiet zawiera aplikację do zarządzania dyskami Palimpsest.
+Obsługuje ona partycjonowanie, tworzenie systemów plików, szyfrowanie,
+RAID, monitorowanie SMART itp.
 
 %package libs
 Summary:	gnome-disk-utility libraries
@@ -103,9 +108,6 @@ Dokumentacja API bibliotek gnome-disk-utility.
 %prep
 %setup -q
 
-sed -i -e 's/^en@shaw//' po/LINGUAS
-rm -f po/en@shaw.po
-
 %build
 %{__gtkdocize}
 %{__intltoolize}
@@ -141,8 +143,8 @@ rm -rf $RPM_BUILD_ROOT
 %postun
 %update_icon_cache hicolor
 
-%post libs	-p /sbin/ldconfig
-%postun	libs	-p /sbin/ldconfig
+%post	libs -p /sbin/ldconfig
+%postun	libs -p /sbin/ldconfig
 
 %files -f palimpsest.lang
 %defattr(644,root,root,755)
