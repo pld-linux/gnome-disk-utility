@@ -6,7 +6,7 @@ Summary:	Disk management application
 Summary(pl.UTF-8):	Aplikacja do zarządzania dyskami
 Name:		gnome-disk-utility
 Version:	2.32.0
-Release:	2
+Release:	3
 License:	LGPL v2+
 Group:		X11/Applications
 #Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-disk-utility/2.30/%{name}-%{version}.tar.bz2
