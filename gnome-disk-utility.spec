@@ -6,7 +6,7 @@ Summary:	Disk management application
 Summary(pl.UTF-8):	Aplikacja do zarządzania dyskami
 Name:		gnome-disk-utility
 Version:	2.32.0
-Release:	3
+Release:	4
 License:	LGPL v2+
 Group:		X11/Applications
 #Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-disk-utility/2.30/%{name}-%{version}.tar.bz2
@@ -130,6 +130,7 @@ rm -rf $RPM_BUILD_ROOT
 	DESTDIR=$RPM_BUILD_ROOT
 
 %{__rm} $RPM_BUILD_ROOT%{_libdir}/nautilus/extensions-2.0/libnautilus-gdu.{a,la}
+%{__rm} $RPM_BUILD_ROOT%{_libdir}/*.la
 
 %find_lang gnome-disk-utility
 %find_lang palimpsest --with-gnome --with-omf
@@ -169,8 +170,6 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/libgdu-gtk.so
 %attr(755,root,root) %{_libdir}/libgdu.so
-%{_libdir}/libgdu-gtk.la
-%{_libdir}/libgdu.la
 %{_includedir}/gnome-disk-utility
 %{_pkgconfigdir}/gdu-gtk.pc
 %{_pkgconfigdir}/gdu.pc
