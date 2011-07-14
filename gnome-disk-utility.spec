@@ -5,21 +5,20 @@
 Summary:	Disk management application
 Summary(pl.UTF-8):	Aplikacja do zarządzania dyskami
 Name:		gnome-disk-utility
-Version:	3.0.0
+Version:	3.0.2
 Release:	1
 License:	LGPL v2+
 Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-disk-utility/3.0/%{name}-%{version}.tar.bz2
-# Source0-md5:	567a57df8555f5bbee3b664f40684518
+# Source0-md5:	2a4b9c005677a62a519b8197e6bba02f
 Patch0:		%{name}-link.patch
 BuildRequires:	autoconf
-BuildRequires:	automake >= 1:1.9
+BuildRequires:	automake >= 1:1.11
 BuildRequires:	avahi-ui-gtk3-devel >= 0.6.25
 BuildRequires:	dbus-glib-devel >= 0.74
 BuildRequires:	docbook-dtd412-xml
 BuildRequires:	gettext-devel
 BuildRequires:	glib2-devel >= 1:2.28.0
-BuildRequires:	gnome-common
 BuildRequires:	gnome-doc-utils
 BuildRequires:	gtk+3-devel >= 3.0.0
 %{?with_apidocs:BuildRequires:	gtk-doc >= 1.3}
@@ -27,7 +26,7 @@ BuildRequires:	intltool >= 0.35.0
 BuildRequires:	libatasmart-devel >= 0.14
 BuildRequires:	libgnome-keyring-devel >= 2.22.0
 BuildRequires:	libnotify-devel >= 0.6.1
-BuildRequires:	libtool
+BuildRequires:	libtool >= 2.2
 BuildRequires:	libunique3-devel >= 3.0.0
 BuildRequires:	nautilus-devel >= 3.0.0
 BuildRequires:	pkgconfig
