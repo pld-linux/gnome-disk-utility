@@ -33,13 +33,13 @@ BuildRequires:	pkgconfig
 BuildRequires:	rpmbuild(find_lang) >= 1.23
 BuildRequires:	rpmbuild(macros) >= 1.601
 BuildRequires:	scrollkeeper
-BuildRequires:	udisks-devel < 1.0.0
+BuildRequires:	udisks-devel < 1.1.0
 BuildRequires:	udisks-devel >= 1.0.0
 Requires(post,postun):	gtk-update-icon-cache
 Requires:	%{name}-libs = %{version}-%{release}
 Requires:	hicolor-icon-theme
 Requires:	nautilus >= 3.0.0
-Requires:	udisks < 1.0.0
+Requires:	udisks < 1.1.0
 Requires:	udisks >= 1.0.0
 Suggests:	openssh-gnome-askpass
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
