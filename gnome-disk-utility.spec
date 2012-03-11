@@ -1,47 +1,37 @@
-#
-# Conditional build:
-%bcond_with	apidocs		# do not build and package API docs
-#
 Summary:	Disk management application
 Summary(pl.UTF-8):	Aplikacja do zarządzania dyskami
 Name:		gnome-disk-utility
-Version:	3.0.2
+Version:	3.3.93
 Release:	1
 License:	LGPL v2+
 Group:		X11/Applications
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-disk-utility/3.0/%{name}-%{version}.tar.bz2
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-disk-utility/3.3/%{name}-%{version}.tar.xz
 # Source0-md5:	2a4b9c005677a62a519b8197e6bba02f
-Patch0:		%{name}-link.patch
 BuildRequires:	autoconf
 BuildRequires:	automake >= 1:1.11
-BuildRequires:	avahi-ui-gtk3-devel >= 0.6.25
-BuildRequires:	dbus-glib-devel >= 0.74
 BuildRequires:	docbook-dtd412-xml
 BuildRequires:	gettext-devel
-BuildRequires:	glib2-devel >= 1:2.28.0
+BuildRequires:	glib2-devel >= 1:2.31.0
+BuildRequires:	gnome-common
 BuildRequires:	gnome-doc-utils
-BuildRequires:	gtk+3-devel >= 3.0.0
-%{?with_apidocs:BuildRequires:	gtk-doc >= 1.3}
+BuildRequires:	gtk+3-devel >= 3.3.11
 BuildRequires:	intltool >= 0.35.0
-BuildRequires:	libatasmart-devel >= 0.14
-BuildRequires:	libgnome-keyring-devel >= 2.22.0
-BuildRequires:	libnotify-devel >= 0.6.1
 BuildRequires:	libtool >= 2.2
-BuildRequires:	libunique3-devel >= 3.0.0
-BuildRequires:	nautilus-devel >= 3.0.0
 BuildRequires:	pkgconfig
 BuildRequires:	rpmbuild(find_lang) >= 1.23
 BuildRequires:	rpmbuild(macros) >= 1.601
-BuildRequires:	scrollkeeper
-BuildRequires:	udisks-devel < 1.1.0
-BuildRequires:	udisks-devel >= 1.0.0
+BuildRequires:	tar >= 1:1.22
+BuildRequires:	udisks2-devel >= 1.90.0
+BuildRequires:	xz
 Requires(post,postun):	gtk-update-icon-cache
 Requires:	%{name}-libs = %{version}-%{release}
 Requires:	hicolor-icon-theme
-Requires:	nautilus >= 3.0.0
-Requires:	udisks < 1.1.0
-Requires:	udisks >= 1.0.0
+Requires:	udisks2 >= 1.90.0
 Suggests:	openssh-gnome-askpass
+Obsoletes:	gnome-disk-utility-apidocs
+Obsoletes:	gnome-disk-utility-devel
+Obsoletes:	gnome-disk-utility-libs
+Obsoletes:	gnome-disk-utility-static
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -54,61 +44,10 @@ Ten pakiet zawiera aplikację do zarządzania dyskami Palimpsest.
 Obsługuje ona partycjonowanie, tworzenie systemów plików, szyfrowanie,
 RAID, monitorowanie SMART itp.
 
-%package libs
-Summary:	gnome-disk-utility libraries
-Summary(pl.UTF-8):	Biblioteki gnome-disk-utility
-Group:		X11/Libraries
-
-%description libs
-gnome-disk-utility libraries.
-
-%description libs -l pl.UTF-8
-Biblioteki gnome-disk-utility.
-
-%package devel
-Summary:	Header files for gnome-disk-utility libraries
-Summary(pl.UTF-8):	Pliki nagłówkowe bibliotek gnome-disk-utility
-Group:		X11/Development/Libraries
-Requires:	%{name}-libs = %{version}-%{release}
-Requires:	glib2-devel >= 1:2.28.0
-Requires:	gtk+3-devel >= 3.0.0
-
-%description devel
-Header files for gnome-disk-utility libraries.
-
-%description devel -l pl.UTF-8
-Pliki nagłówkowe bibliotek gnome-disk-utility.
-
-%package static
-Summary:	Static gnome-disk-utility libraries
-Summary(pl.UTF-8):	Statyczne biblioteki gnome-disk-utility
-Group:		X11/Development/Libraries
-Requires:	%{name}-devel = %{version}-%{release}
-
-%description static
-Static gnome-disk-utility libraries.
-
-%description static -l pl.UTF-8
-Statyczne biblioteki gnome-disk-utility.
-
-%package apidocs
-Summary:	gnome-disk-utility libraries API documentation
-Summary(pl.UTF-8):	Dokumentacja API bibliotek gnome-disk-utility
-Group:		Documentation
-Requires:	gtk-doc-common
-
-%description apidocs
-gnome-disk-utility libraries API documentation.
-
-%description apidocs -l pl.UTF-8
-Dokumentacja API bibliotek gnome-disk-utility.
-
 %prep
 %setup -q
-%patch0 -p1
 
 %build
-%{__gtkdocize}
 %{__intltoolize}
 %{__libtoolize}
 %{__aclocal}
@@ -116,10 +55,7 @@ Dokumentacja API bibliotek gnome-disk-utility.
 %{__autoheader}
 %{__automake}
 %configure \
-	--disable-silent-rules \
-	%{__enable_disable apidocs gtk-doc} \
-	--with-html-dir=%{_gtkdocdir}
-
+	--disable-silent-rules
 %{__make}
 
 %install
@@ -128,11 +64,7 @@ rm -rf $RPM_BUILD_ROOT
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
-%{__rm} $RPM_BUILD_ROOT%{_libdir}/nautilus/extensions-3.0/libnautilus-gdu.{a,la}
-%{__rm} $RPM_BUILD_ROOT%{_libdir}/*.la
-
 %find_lang gnome-disk-utility
-%find_lang palimpsest --with-gnome --with-omf
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -143,43 +75,10 @@ rm -rf $RPM_BUILD_ROOT
 %postun
 %update_icon_cache hicolor
 
-%post	libs -p /sbin/ldconfig
-%postun	libs -p /sbin/ldconfig
-
-%files -f palimpsest.lang
+%files -f gnome-disk-utility.lang
 %defattr(644,root,root,755)
-%doc AUTHORS NEWS README TODO
+%doc AUTHORS NEWS README
 %attr(755,root,root) %{_bindir}/palimpsest
-%attr(755,root,root) %{_libdir}/gdu-format-tool
-%attr(755,root,root) %{_libdir}/gdu-notification-daemon
-%attr(755,root,root) %{_libdir}/nautilus/extensions-3.0/libnautilus-gdu.so
-%{_sysconfdir}/xdg/autostart/gdu-notification-daemon.desktop
+%{_datadir}/gnome-disk-utility
 %{_desktopdir}/palimpsest.desktop
 %{_iconsdir}/hicolor/*/*/*.png
-%{_iconsdir}/hicolor/*/*/*.svg
-
-%files libs -f gnome-disk-utility.lang
-%defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/libgdu-gtk.so.*.*.*
-%attr(755,root,root) %{_libdir}/libgdu.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libgdu-gtk.so.0
-%attr(755,root,root) %ghost %{_libdir}/libgdu.so.0
-
-%files devel
-%defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/libgdu-gtk.so
-%attr(755,root,root) %{_libdir}/libgdu.so
-%{_includedir}/gnome-disk-utility
-%{_pkgconfigdir}/gdu-gtk.pc
-%{_pkgconfigdir}/gdu.pc
-
-%files static
-%defattr(644,root,root,755)
-%{_libdir}/libgdu-gtk.a
-%{_libdir}/libgdu.a
-
-%if %{with apidocs}
-%files apidocs
-%defattr(644,root,root,755)
-%{_gtkdocdir}/gnome-disk-utility
-%endif
