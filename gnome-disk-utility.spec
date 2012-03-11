@@ -24,7 +24,6 @@ BuildRequires:	tar >= 1:1.22
 BuildRequires:	udisks2-devel >= 1.90.0
 BuildRequires:	xz
 Requires(post,postun):	gtk-update-icon-cache
-Requires:	%{name}-libs = %{version}-%{release}
 Requires:	hicolor-icon-theme
 Requires:	udisks2 >= 1.90.0
 Suggests:	openssh-gnome-askpass
