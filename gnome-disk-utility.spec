@@ -1,12 +1,12 @@
 Summary:	Disk management application
 Summary(pl.UTF-8):	Aplikacja do zarządzania dyskami
 Name:		gnome-disk-utility
-Version:	3.6.0
+Version:	3.6.1
 Release:	1
 License:	LGPL v2+
 Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-disk-utility/3.6/%{name}-%{version}.tar.xz
-# Source0-md5:	644323ef6e543220c6cee625e0a33929
+# Source0-md5:	ff6e0a50a3a6aa9a8d9aa8b19d304485
 BuildRequires:	autoconf
 BuildRequires:	automake >= 1:1.11
 BuildRequires:	docbook-dtd412-xml
@@ -14,7 +14,7 @@ BuildRequires:	gettext-devel
 BuildRequires:	glib2-devel >= 1:2.32.0
 BuildRequires:	gnome-common
 BuildRequires:	gnome-doc-utils
-BuildRequires:	gtk+3-devel >= 3.5.8
+BuildRequires:	gtk+3-devel >= 3.6.0
 BuildRequires:	intltool >= 0.35.0
 BuildRequires:	libpwquality-devel >= 1.0.0
 BuildRequires:	libsecret-devel >= 0.7
@@ -28,8 +28,9 @@ BuildRequires:	udisks2-devel >= 1.99.0
 BuildRequires:	xz
 Requires(post,postun):	glib2 >= 1:2.26.0
 Requires(post,postun):	gtk-update-icon-cache
+Requires:	gtk+3 >= 3.6.0
 Requires:	hicolor-icon-theme
-Requires:	udisks2 >= 1.98.0
+Requires:	udisks2 >= 1.99.0
 Suggests:	openssh-gnome-askpass
 Obsoletes:	gnome-disk-utility-apidocs
 Obsoletes:	gnome-disk-utility-devel
