@@ -1,12 +1,12 @@
 Summary:	Disk management application
 Summary(pl.UTF-8):	Aplikacja do zarządzania dyskami
 Name:		gnome-disk-utility
-Version:	3.8.2
+Version:	3.10.0
 Release:	1
 License:	LGPL v2+
 Group:		X11/Applications
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-disk-utility/3.8/%{name}-%{version}.tar.xz
-# Source0-md5:	505acafd74fb7cc81065b8b4a1cff868
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-disk-utility/3.10/%{name}-%{version}.tar.xz
+# Source0-md5:	d89ad8a648a2003266737c00e36c40e6
 BuildRequires:	autoconf
 BuildRequires:	automake >= 1:1.11
 BuildRequires:	docbook-dtd412-xml
@@ -22,19 +22,20 @@ BuildRequires:	libdvdread-devel >= 4.2.0
 BuildRequires:	libpwquality-devel >= 1.0.0
 BuildRequires:	libsecret-devel >= 0.7
 BuildRequires:	libtool >= 2.2
+BuildRequires:	lzma-devel >= 5.0.5
 BuildRequires:	pkgconfig
 BuildRequires:	rpmbuild(find_lang) >= 1.23
 BuildRequires:	rpmbuild(macros) >= 1.601
 BuildRequires:	systemd-devel >= 44
 BuildRequires:	tar >= 1:1.22
-BuildRequires:	udisks2-devel >= 2.1
+BuildRequires:	udisks2-devel >= 2.1.1
 BuildRequires:	xz
 Requires(post,postun):	glib2 >= 1:2.32.0
 Requires(post,postun):	gtk-update-icon-cache
 Requires:	gnome-themes-standard
 Requires:	gtk+3 >= 3.6.0
 Requires:	hicolor-icon-theme
-Requires:	udisks2 >= 2.1
+Requires:	udisks2 >= 2.1.1
 Suggests:	openssh-gnome-askpass
 Obsoletes:	gnome-disk-utility-apidocs
 Obsoletes:	gnome-disk-utility-devel
@@ -98,6 +99,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/gnome-settings-daemon-3.0/gdu-sd-plugin.gnome-settings-plugin
 %{_datadir}/gnome-disk-utility
 %{_desktopdir}/gnome-disk-image-mounter.desktop
+%{_desktopdir}/gnome-disk-image-writer.desktop
 %{_desktopdir}/gnome-disks.desktop
 %{_datadir}/glib-2.0/schemas/org.gnome.Disks.gschema.xml
 %{_datadir}/glib-2.0/schemas/org.gnome.settings-daemon.plugins.gdu-sd.gschema.xml
