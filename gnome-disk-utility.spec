@@ -1,12 +1,12 @@
 Summary:	Disk management application
 Summary(pl.UTF-8):	Aplikacja do zarządzania dyskami
 Name:		gnome-disk-utility
-Version:	3.10.0
+Version:	3.12.0
 Release:	1
 License:	LGPL v2+
 Group:		X11/Applications
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-disk-utility/3.10/%{name}-%{version}.tar.xz
-# Source0-md5:	d89ad8a648a2003266737c00e36c40e6
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-disk-utility/3.12/%{name}-%{version}.tar.xz
+# Source0-md5:	1cd6f0b8e434f35dc9dd18e1cd082be4
 BuildRequires:	autoconf >= 2.50
 BuildRequires:	automake >= 1:1.11
 BuildRequires:	docbook-dtd412-xml
@@ -15,7 +15,7 @@ BuildRequires:	glib2-devel >= 1:2.32.0
 BuildRequires:	gnome-common
 BuildRequires:	gnome-doc-utils
 BuildRequires:	gnome-settings-daemon-devel >= 3.6
-BuildRequires:	gtk+3-devel >= 3.6.0
+BuildRequires:	gtk+3-devel >= 3.10.0
 BuildRequires:	intltool >= 0.35.0
 BuildRequires:	libcanberra-gtk3-devel >= 0.1
 BuildRequires:	libdvdread-devel >= 4.2.0
@@ -36,7 +36,7 @@ Requires(post,postun):	glib2 >= 1:2.32.0
 Requires(post,postun):	gtk-update-icon-cache
 Requires:	glib2 >= 1:2.32.0
 Requires:	gnome-themes-standard
-Requires:	gtk+3 >= 3.6.0
+Requires:	gtk+3 >= 3.10.0
 Requires:	hicolor-icon-theme
 Requires:	libdvdread >= 4.2.0
 Requires:	libnotify >= 0.7
@@ -105,7 +105,6 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/gnome-disks
 %attr(755,root,root) %{_libdir}/gnome-settings-daemon-3.0/libgdu-sd.so
 %{_libdir}/gnome-settings-daemon-3.0/gdu-sd-plugin.gnome-settings-plugin
-%{_datadir}/gnome-disk-utility
 %{_desktopdir}/gnome-disk-image-mounter.desktop
 %{_desktopdir}/gnome-disk-image-writer.desktop
 %{_desktopdir}/gnome-disks.desktop
