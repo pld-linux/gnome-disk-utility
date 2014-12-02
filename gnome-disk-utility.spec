@@ -1,12 +1,12 @@
 Summary:	Disk management application
 Summary(pl.UTF-8):	Aplikacja do zarządzania dyskami
 Name:		gnome-disk-utility
-Version:	3.12.1
+Version:	3.14.0
 Release:	1
 License:	LGPL v2+
 Group:		X11/Applications
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-disk-utility/3.12/%{name}-%{version}.tar.xz
-# Source0-md5:	93bba15aad7bd64f762f6914db2eba16
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-disk-utility/3.14/%{name}-%{version}.tar.xz
+# Source0-md5:	a9fe64b5129c3dc39395f1c7ee76ba3b
 BuildRequires:	autoconf >= 2.50
 BuildRequires:	automake >= 1:1.11
 BuildRequires:	docbook-dtd412-xml
@@ -15,7 +15,7 @@ BuildRequires:	glib2-devel >= 1:2.32.0
 BuildRequires:	gnome-common
 BuildRequires:	gnome-doc-utils
 BuildRequires:	gnome-settings-daemon-devel >= 3.6
-BuildRequires:	gtk+3-devel >= 3.10.0
+BuildRequires:	gtk+3-devel >= 3.12.0
 BuildRequires:	intltool >= 0.35.0
 BuildRequires:	libcanberra-gtk3-devel >= 0.1
 BuildRequires:	libdvdread-devel >= 4.2.0
@@ -36,7 +36,7 @@ Requires(post,postun):	glib2 >= 1:2.32.0
 Requires(post,postun):	gtk-update-icon-cache
 Requires:	glib2 >= 1:2.32.0
 Requires:	gnome-themes-standard
-Requires:	gtk+3 >= 3.10.0
+Requires:	gtk+3 >= 3.12.0
 Requires:	hicolor-icon-theme
 Requires:	libdvdread >= 4.2.0
 Requires:	libnotify >= 0.7
