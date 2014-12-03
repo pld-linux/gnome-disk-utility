@@ -35,6 +35,7 @@ BuildRequires:	xz-devel >= 1:5.0.5
 Requires(post,postun):	glib2 >= 1:2.32.0
 Requires(post,postun):	gtk-update-icon-cache
 Requires:	glib2 >= 1:2.32.0
+Requires:	gnome-settings-daemon >= 3.6
 Requires:	gnome-themes-standard
 Requires:	gtk+3 >= 3.12.0
 Requires:	hicolor-icon-theme
@@ -43,6 +44,7 @@ Requires:	libnotify >= 0.7
 Requires:	libpwquality >= 1.0.0
 Requires:	libsecret >= 0.7
 Requires:	udisks2 >= 2.1.1
+Requires:	xz-libs >= 1:5.0.5
 Suggests:	openssh-gnome-askpass
 Obsoletes:	gnome-disk-utility-apidocs
 Obsoletes:	gnome-disk-utility-devel
