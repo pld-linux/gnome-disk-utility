@@ -1,12 +1,12 @@
 Summary:	Disk management application
 Summary(pl.UTF-8):	Aplikacja do zarządzania dyskami
 Name:		gnome-disk-utility
-Version:	3.14.0
-Release:	2
+Version:	3.16.1
+Release:	1
 License:	LGPL v2+
 Group:		X11/Applications
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-disk-utility/3.14/%{name}-%{version}.tar.xz
-# Source0-md5:	a9fe64b5129c3dc39395f1c7ee76ba3b
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-disk-utility/3.16/%{name}-%{version}.tar.xz
+# Source0-md5:	4d89bc9b6c354dac8e4b2eebb6848fcd
 BuildRequires:	autoconf >= 2.50
 BuildRequires:	automake >= 1:1.11
 BuildRequires:	docbook-dtd412-xml
@@ -22,7 +22,7 @@ BuildRequires:	libdvdread-devel >= 4.2.0
 BuildRequires:	libnotify-devel >= 0.7
 BuildRequires:	libpwquality-devel >= 1.0.0
 BuildRequires:	libsecret-devel >= 0.7
-BuildRequires:	libtool >= 2.2
+BuildRequires:	libtool >= 2:2.2
 BuildRequires:	libxslt-progs
 BuildRequires:	pkgconfig
 BuildRequires:	rpmbuild(find_lang) >= 1.23
@@ -91,12 +91,10 @@ rm -rf $RPM_BUILD_ROOT
 rm -rf $RPM_BUILD_ROOT
 
 %post
-%update_icon_cache HighContrast
 %update_icon_cache hicolor
 %glib_compile_schemas
 
 %postun
-%update_icon_cache HighContrast
 %update_icon_cache hicolor
 %glib_compile_schemas
 
@@ -112,8 +110,8 @@ rm -rf $RPM_BUILD_ROOT
 %{_desktopdir}/gnome-disks.desktop
 %{_datadir}/glib-2.0/schemas/org.gnome.Disks.gschema.xml
 %{_datadir}/glib-2.0/schemas/org.gnome.settings-daemon.plugins.gdu-sd.gschema.xml
-%{_iconsdir}/HighContrast/*x*/apps/gnome-disks.png
 %{_iconsdir}/hicolor/*x*/apps/gnome-disks.png
 %{_iconsdir}/hicolor/scalable/apps/gnome-disks-state-standby-symbolic.svg
+%{_iconsdir}/hicolor/scalable/apps/gnome-disks-symbolic.svg
 %{_mandir}/man1/gnome-disk-image-mounter.1*
 %{_mandir}/man1/gnome-disks.1*
