@@ -1,12 +1,13 @@
 Summary:	Disk management application
 Summary(pl.UTF-8):	Aplikacja do zarządzania dyskami
 Name:		gnome-disk-utility
-Version:	3.16.2
+Version:	3.18.0
 Release:	1
 License:	LGPL v2+
 Group:		X11/Applications
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-disk-utility/3.16/%{name}-%{version}.tar.xz
-# Source0-md5:	704725427be3e985c33fb825625ab94c
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-disk-utility/3.18/%{name}-%{version}.tar.xz
+# Source0-md5:	209047129bbb0dbcb657c0b146d34300
+BuildRequires:	appstream-glib
 BuildRequires:	autoconf >= 2.50
 BuildRequires:	automake >= 1:1.11
 BuildRequires:	docbook-dtd412-xml
@@ -14,9 +15,9 @@ BuildRequires:	gettext-tools
 BuildRequires:	glib2-devel >= 1:2.32.0
 BuildRequires:	gnome-common
 BuildRequires:	gnome-doc-utils
-BuildRequires:	gnome-settings-daemon-devel >= 3.6
-BuildRequires:	gtk+3-devel >= 3.12.0
-BuildRequires:	intltool >= 0.35.0
+BuildRequires:	gnome-settings-daemon-devel >= 3.8
+BuildRequires:	gtk+3-devel >= 3.16.0
+BuildRequires:	intltool >= 0.50.2
 BuildRequires:	libcanberra-gtk3-devel >= 0.1
 BuildRequires:	libdvdread-devel >= 4.2.0
 BuildRequires:	libnotify-devel >= 0.7
@@ -27,7 +28,7 @@ BuildRequires:	libxslt-progs
 BuildRequires:	pkgconfig
 BuildRequires:	rpmbuild(find_lang) >= 1.23
 BuildRequires:	rpmbuild(macros) >= 1.601
-BuildRequires:	systemd-devel >= 44
+BuildRequires:	systemd-devel >= 209
 BuildRequires:	tar >= 1:1.22
 BuildRequires:	udisks2-devel >= 2.1.1
 BuildRequires:	xz
@@ -35,9 +36,9 @@ BuildRequires:	xz-devel >= 1:5.0.5
 Requires(post,postun):	glib2 >= 1:2.32.0
 Requires(post,postun):	gtk-update-icon-cache
 Requires:	glib2 >= 1:2.32.0
-Requires:	gnome-settings-daemon >= 3.6
+Requires:	gnome-settings-daemon >= 3.8
 Requires:	gnome-themes-standard
-Requires:	gtk+3 >= 3.12.0
+Requires:	gtk+3 >= 3.16.0
 Requires:	hicolor-icon-theme
 Requires:	libdvdread >= 4.2.0
 Requires:	libnotify >= 0.7
@@ -107,7 +108,9 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/gnome-settings-daemon-3.0/gdu-sd-plugin.gnome-settings-plugin
 %{_desktopdir}/gnome-disk-image-mounter.desktop
 %{_desktopdir}/gnome-disk-image-writer.desktop
-%{_desktopdir}/gnome-disks.desktop
+%{_desktopdir}/org.gnome.DiskUtility.desktop
+%{_datadir}/appdata/org.gnome.DiskUtility.appdata.xml
+%{_datadir}/dbus-1/services/org.gnome.DiskUtility.service
 %{_datadir}/glib-2.0/schemas/org.gnome.Disks.gschema.xml
 %{_datadir}/glib-2.0/schemas/org.gnome.settings-daemon.plugins.gdu-sd.gschema.xml
 %{_iconsdir}/hicolor/*x*/apps/gnome-disks.png
