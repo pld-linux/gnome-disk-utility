@@ -1,12 +1,12 @@
 Summary:	Disk management application
 Summary(pl.UTF-8):	Aplikacja do zarządzania dyskami
 Name:		gnome-disk-utility
-Version:	3.18.2
+Version:	3.18.3.1
 Release:	1
 License:	LGPL v2+
 Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-disk-utility/3.18/%{name}-%{version}.tar.xz
-# Source0-md5:	c635fdfb9d4af39ed506d371d6cb86b9
+# Source0-md5:	1506870cceaea1311af3e95e063d6b7a
 BuildRequires:	appstream-glib
 BuildRequires:	autoconf >= 2.50
 BuildRequires:	automake >= 1:1.11
