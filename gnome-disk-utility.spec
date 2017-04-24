@@ -1,21 +1,20 @@
 Summary:	Disk management application
 Summary(pl.UTF-8):	Aplikacja do zarządzania dyskami
 Name:		gnome-disk-utility
-Version:	3.22.1
+Version:	3.24.0
 Release:	1
 License:	LGPL v2+
 Group:		X11/Applications
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-disk-utility/3.22/%{name}-%{version}.tar.xz
-# Source0-md5:	ecb9ace36964c279f8093f5e34cf3799
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-disk-utility/3.24/%{name}-%{version}.tar.xz
+# Source0-md5:	bf31db0fa2a79a58c254aab95d825752
 BuildRequires:	appstream-glib-devel
 BuildRequires:	autoconf >= 2.50
 BuildRequires:	automake >= 1:1.11
 BuildRequires:	docbook-dtd412-xml
-BuildRequires:	gettext-tools
+BuildRequires:	gettext-tools >= 0.19.8
 BuildRequires:	glib2-devel >= 1:2.32.0
 BuildRequires:	gnome-settings-daemon-devel >= 3.8
 BuildRequires:	gtk+3-devel >= 3.16.0
-BuildRequires:	intltool >= 0.50.2
 BuildRequires:	libcanberra-gtk3-devel >= 0.1
 BuildRequires:	libdvdread-devel >= 4.2.0
 BuildRequires:	libnotify-devel >= 0.7
@@ -65,7 +64,6 @@ RAID, monitorowanie SMART itp.
 %setup -q
 
 %build
-%{__intltoolize}
 %{__libtoolize}
 %{__aclocal}
 %{__autoconf}
@@ -81,8 +79,6 @@ rm -rf $RPM_BUILD_ROOT
 
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
-
-%{__rm} $RPM_BUILD_ROOT%{_libdir}/gnome-settings-daemon-3.0/*.la
 
 %find_lang gnome-disk-utility
 
@@ -102,15 +98,14 @@ rm -rf $RPM_BUILD_ROOT
 %doc AUTHORS NEWS README TODO
 %attr(755,root,root) %{_bindir}/gnome-disk-image-mounter
 %attr(755,root,root) %{_bindir}/gnome-disks
-%attr(755,root,root) %{_libdir}/gnome-settings-daemon-3.0/libgdu-sd.so
-%{_libdir}/gnome-settings-daemon-3.0/gdu-sd-plugin.gnome-settings-plugin
+%attr(755,root,root) %{_libdir}/gsd-disk-utility-notify
+%{_sysconfdir}/xdg/autostart/org.gnome.SettingsDaemon.DiskUtilityNotify.desktop
 %{_desktopdir}/gnome-disk-image-mounter.desktop
 %{_desktopdir}/gnome-disk-image-writer.desktop
 %{_desktopdir}/org.gnome.DiskUtility.desktop
 %{_datadir}/appdata/org.gnome.DiskUtility.appdata.xml
 %{_datadir}/dbus-1/services/org.gnome.DiskUtility.service
 %{_datadir}/glib-2.0/schemas/org.gnome.Disks.gschema.xml
-%{_datadir}/glib-2.0/schemas/org.gnome.settings-daemon.plugins.gdu-sd.gschema.xml
 %{_iconsdir}/hicolor/*x*/apps/gnome-disks.png
 %{_iconsdir}/hicolor/scalable/apps/gnome-disks-state-standby-symbolic.svg
 %{_iconsdir}/hicolor/scalable/apps/gnome-disks-symbolic.svg
