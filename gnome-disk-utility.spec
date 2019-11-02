@@ -1,15 +1,13 @@
 Summary:	Disk management application
 Summary(pl.UTF-8):	Aplikacja do zarządzania dyskami
 Name:		gnome-disk-utility
-Version:	3.24.1
+Version:	3.34.0
 Release:	1
 License:	LGPL v2+
 Group:		X11/Applications
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-disk-utility/3.24/%{name}-%{version}.tar.xz
-# Source0-md5:	42c24b84d657c8828023740131bcd36e
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-disk-utility/3.34/%{name}-%{version}.tar.xz
+# Source0-md5:	1ffcccdec1c2ec8d74e369af6ed40af3
 BuildRequires:	appstream-glib-devel
-BuildRequires:	autoconf >= 2.50
-BuildRequires:	automake >= 1:1.11
 BuildRequires:	docbook-dtd412-xml
 BuildRequires:	gettext-tools >= 0.19.8
 BuildRequires:	glib2-devel >= 1:2.32.0
@@ -20,8 +18,9 @@ BuildRequires:	libdvdread-devel >= 4.2.0
 BuildRequires:	libnotify-devel >= 0.7
 BuildRequires:	libpwquality-devel >= 1.0.0
 BuildRequires:	libsecret-devel >= 0.7
-BuildRequires:	libtool >= 2:2.2
 BuildRequires:	libxslt-progs
+BuildRequires:	 meson >= 0.47.0
+BuildRequires:	ninja >= 1.5
 BuildRequires:	pkgconfig
 BuildRequires:	rpmbuild(find_lang) >= 1.23
 BuildRequires:	rpmbuild(macros) >= 1.601
@@ -64,21 +63,14 @@ RAID, monitorowanie SMART itp.
 %setup -q
 
 %build
-%{__libtoolize}
-%{__aclocal}
-%{__autoconf}
-%{__autoheader}
-%{__automake}
-%configure \
-	--disable-silent-rules \
-	--disable-static
-%{__make}
+%meson build
+
+%ninja_build -C build
 
 %install
 rm -rf $RPM_BUILD_ROOT
 
-%{__make} install \
-	DESTDIR=$RPM_BUILD_ROOT
+%ninja_install -C build
 
 %find_lang gnome-disk-utility
 
@@ -95,19 +87,19 @@ rm -rf $RPM_BUILD_ROOT
 
 %files -f gnome-disk-utility.lang
 %defattr(644,root,root,755)
-%doc AUTHORS NEWS README TODO
+%doc AUTHORS NEWS README.md TODO
 %attr(755,root,root) %{_bindir}/gnome-disk-image-mounter
 %attr(755,root,root) %{_bindir}/gnome-disks
-%attr(755,root,root) %{_libdir}/gsd-disk-utility-notify
+%attr(755,root,root) %{_libexecdir}/gsd-disk-utility-notify
 %{_sysconfdir}/xdg/autostart/org.gnome.SettingsDaemon.DiskUtilityNotify.desktop
 %{_desktopdir}/gnome-disk-image-mounter.desktop
 %{_desktopdir}/gnome-disk-image-writer.desktop
 %{_desktopdir}/org.gnome.DiskUtility.desktop
-%{_datadir}/appdata/org.gnome.DiskUtility.appdata.xml
+%{_datadir}/metainfo/org.gnome.DiskUtility.appdata.xml
 %{_datadir}/dbus-1/services/org.gnome.DiskUtility.service
 %{_datadir}/glib-2.0/schemas/org.gnome.Disks.gschema.xml
-%{_iconsdir}/hicolor/*x*/apps/gnome-disks.png
 %{_iconsdir}/hicolor/scalable/apps/gnome-disks-state-standby-symbolic.svg
-%{_iconsdir}/hicolor/scalable/apps/gnome-disks-symbolic.svg
+%{_iconsdir}/hicolor/scalable/apps/org.gnome.DiskUtility-symbolic.svg
+%{_iconsdir}/hicolor/scalable/apps/org.gnome.DiskUtility.svg
 %{_mandir}/man1/gnome-disk-image-mounter.1*
 %{_mandir}/man1/gnome-disks.1*
