@@ -7,7 +7,6 @@ License:	LGPL v2+
 Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-disk-utility/3.34/%{name}-%{version}.tar.xz
 # Source0-md5:	1ffcccdec1c2ec8d74e369af6ed40af3
-BuildRequires:	appstream-glib-devel
 BuildRequires:	docbook-dtd412-xml
 BuildRequires:	gettext-tools >= 0.19.8
 BuildRequires:	glib2-devel >= 1:2.32.0
@@ -19,14 +18,14 @@ BuildRequires:	libnotify-devel >= 0.7
 BuildRequires:	libpwquality-devel >= 1.0.0
 BuildRequires:	libsecret-devel >= 0.7
 BuildRequires:	libxslt-progs
-BuildRequires:	 meson >= 0.47.0
+BuildRequires:	meson >= 0.50.0
 BuildRequires:	ninja >= 1.5
 BuildRequires:	pkgconfig
 BuildRequires:	rpmbuild(find_lang) >= 1.23
-BuildRequires:	rpmbuild(macros) >= 1.601
+BuildRequires:	rpmbuild(macros) >= 1.736
 BuildRequires:	systemd-devel >= 1:209
 BuildRequires:	tar >= 1:1.22
-BuildRequires:	udisks2-devel >= 2.1.1
+BuildRequires:	udisks2-devel >= 2.7.6
 BuildRequires:	xz
 BuildRequires:	xz-devel >= 1:5.0.5
 Requires(post,postun):	glib2 >= 1:2.32.0
@@ -36,11 +35,12 @@ Requires:	gnome-settings-daemon >= 3.8
 Requires:	gnome-themes-standard
 Requires:	gtk+3 >= 3.16.0
 Requires:	hicolor-icon-theme
+Requires:	libcanberra-gtk3 >= 0.1
 Requires:	libdvdread >= 4.2.0
 Requires:	libnotify >= 0.7
 Requires:	libpwquality >= 1.0.0
 Requires:	libsecret >= 0.7
-Requires:	udisks2 >= 2.1.1
+Requires:	udisks2 >= 2.7.6
 Requires:	xz-libs >= 1:5.0.5
 Suggests:	openssh-gnome-askpass
 Obsoletes:	gnome-disk-utility-apidocs
@@ -92,12 +92,12 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/gnome-disks
 %attr(755,root,root) %{_libexecdir}/gsd-disk-utility-notify
 %{_sysconfdir}/xdg/autostart/org.gnome.SettingsDaemon.DiskUtilityNotify.desktop
+%{_datadir}/dbus-1/services/org.gnome.DiskUtility.service
+%{_datadir}/glib-2.0/schemas/org.gnome.Disks.gschema.xml
+%{_datadir}/metainfo/org.gnome.DiskUtility.appdata.xml
 %{_desktopdir}/gnome-disk-image-mounter.desktop
 %{_desktopdir}/gnome-disk-image-writer.desktop
 %{_desktopdir}/org.gnome.DiskUtility.desktop
-%{_datadir}/metainfo/org.gnome.DiskUtility.appdata.xml
-%{_datadir}/dbus-1/services/org.gnome.DiskUtility.service
-%{_datadir}/glib-2.0/schemas/org.gnome.Disks.gschema.xml
 %{_iconsdir}/hicolor/scalable/apps/gnome-disks-state-standby-symbolic.svg
 %{_iconsdir}/hicolor/scalable/apps/org.gnome.DiskUtility-symbolic.svg
 %{_iconsdir}/hicolor/scalable/apps/org.gnome.DiskUtility.svg
