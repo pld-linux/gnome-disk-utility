@@ -2,7 +2,7 @@ Summary:	Disk management application
 Summary(pl.UTF-8):	Aplikacja do zarządzania dyskami
 Name:		gnome-disk-utility
 Version:	3.34.0
-Release:	1
+Release:	2
 License:	LGPL v2+
 Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-disk-utility/3.34/%{name}-%{version}.tar.xz
@@ -32,7 +32,6 @@ Requires(post,postun):	glib2 >= 1:2.32.0
 Requires(post,postun):	gtk-update-icon-cache
 Requires:	glib2 >= 1:2.32.0
 Requires:	gnome-settings-daemon >= 3.8
-Requires:	gnome-themes-standard
 Requires:	gtk+3 >= 3.16.0
 Requires:	hicolor-icon-theme
 Requires:	libcanberra-gtk3 >= 0.1
