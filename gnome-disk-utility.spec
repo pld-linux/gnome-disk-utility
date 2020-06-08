@@ -1,12 +1,13 @@
 Summary:	Disk management application
 Summary(pl.UTF-8):	Aplikacja do zarządzania dyskami
 Name:		gnome-disk-utility
-Version:	3.34.0
-Release:	3
+Version:	3.36.1
+Release:	1
 License:	LGPL v2+
 Group:		X11/Applications
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-disk-utility/3.34/%{name}-%{version}.tar.xz
-# Source0-md5:	1ffcccdec1c2ec8d74e369af6ed40af3
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-disk-utility/3.36/%{name}-%{version}.tar.xz
+# Source0-md5:	0c35cb9758f2471c6941a0ec833972c4
+URL:		https://wiki.gnome.org/Apps/Disks
 BuildRequires:	docbook-dtd412-xml
 BuildRequires:	gettext-tools >= 0.19.8
 BuildRequires:	glib2-devel >= 1:2.32.0
@@ -98,7 +99,8 @@ rm -rf $RPM_BUILD_ROOT
 %{_desktopdir}/gnome-disk-image-writer.desktop
 %{_desktopdir}/org.gnome.DiskUtility.desktop
 %{_iconsdir}/hicolor/scalable/apps/gnome-disks-state-standby-symbolic.svg
-%{_iconsdir}/hicolor/scalable/apps/org.gnome.DiskUtility-symbolic.svg
 %{_iconsdir}/hicolor/scalable/apps/org.gnome.DiskUtility.svg
+%{_iconsdir}/hicolor/scalable/apps/org.gnome.DiskUtility.Devel.svg
+%{_iconsdir}/hicolor/scalable/apps/org.gnome.DiskUtility-symbolic.svg
 %{_mandir}/man1/gnome-disk-image-mounter.1*
 %{_mandir}/man1/gnome-disks.1*
