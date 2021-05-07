@@ -1,12 +1,12 @@
 Summary:	Disk management application
 Summary(pl.UTF-8):	Aplikacja do zarządzania dyskami
 Name:		gnome-disk-utility
-Version:	40.0
+Version:	40.1
 Release:	1
 License:	LGPL v2+
 Group:		X11/Applications
 Source0:	https://download.gnome.org/sources/gnome-disk-utility/40/%{name}-%{version}.tar.xz
-# Source0-md5:	49a9fbc56be0dd5693b0ed535924471b
+# Source0-md5:	fc26e4437418da1ce6b08f117745ae60
 URL:		https://wiki.gnome.org/Apps/Disks
 BuildRequires:	docbook-dtd412-xml
 BuildRequires:	gettext-tools >= 0.19.8
@@ -45,10 +45,10 @@ Requires:	libsecret >= 0.7
 Requires:	udisks2 >= 2.7.6
 Requires:	xz-libs >= 1:5.0.5
 Suggests:	openssh-gnome-askpass
-Obsoletes:	gnome-disk-utility-apidocs
-Obsoletes:	gnome-disk-utility-devel
-Obsoletes:	gnome-disk-utility-libs
-Obsoletes:	gnome-disk-utility-static
+Obsoletes:	gnome-disk-utility-apidocs < 3.4
+Obsoletes:	gnome-disk-utility-devel < 3.4
+Obsoletes:	gnome-disk-utility-libs < 3.4
+Obsoletes:	gnome-disk-utility-static < 3.4
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
