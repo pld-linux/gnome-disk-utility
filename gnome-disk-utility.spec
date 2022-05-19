@@ -1,12 +1,12 @@
 Summary:	Disk management application
 Summary(pl.UTF-8):	Aplikacja do zarządzania dyskami
 Name:		gnome-disk-utility
-Version:	40.2
+Version:	42.0
 Release:	1
 License:	LGPL v2+
 Group:		X11/Applications
-Source0:	https://download.gnome.org/sources/gnome-disk-utility/40/%{name}-%{version}.tar.xz
-# Source0-md5:	10a01b70d411f5e6c6d1fbf16e07458d
+Source0:	https://download.gnome.org/sources/gnome-disk-utility/42/%{name}-%{version}.tar.xz
+# Source0-md5:	5c03e03bbe1042d58790d64a9cbc4e7d
 URL:		https://wiki.gnome.org/Apps/Disks
 BuildRequires:	docbook-dtd412-xml
 BuildRequires:	gettext-tools >= 0.19.8
@@ -15,7 +15,7 @@ BuildRequires:	gnome-settings-daemon-devel >= 3.8
 BuildRequires:	gtk+3-devel >= 3.16.0
 BuildRequires:	libcanberra-gtk3-devel >= 0.1
 BuildRequires:	libdvdread-devel >= 4.2.0
-BuildRequires:	libhandy1-devel >= 1.2.0
+BuildRequires:	libhandy1-devel >= 1.5.0
 BuildRequires:	libnotify-devel >= 0.7
 BuildRequires:	libpwquality-devel >= 1.0.0
 BuildRequires:	libsecret-devel >= 0.7
@@ -38,7 +38,7 @@ Requires:	gtk+3 >= 3.16.0
 Requires:	hicolor-icon-theme
 Requires:	libcanberra-gtk3 >= 0.1
 Requires:	libdvdread >= 4.2.0
-Requires:	libhandy1 >= 1.2.0
+Requires:	libhandy1 >= 1.5.0
 Requires:	libnotify >= 0.7
 Requires:	libpwquality >= 1.0.0
 Requires:	libsecret >= 0.7
